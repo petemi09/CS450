@@ -15,11 +15,13 @@ public class SimpleProcess {
     private final int nextBurst;
     private final int priority;
     private final int arrivalTime;
+    public int weightTime;
 
     public SimpleProcess(int nextBurst, int priority, int arrivalTime) {
         this.nextBurst = nextBurst;
         this.priority = priority;
         this.arrivalTime = arrivalTime;
+        this.weightTime = 0;
     }
 
     public int getNextBurst() {
