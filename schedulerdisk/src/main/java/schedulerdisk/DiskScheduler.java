@@ -70,8 +70,6 @@ public class DiskScheduler {
         int placeholder2 = 0;
         int value = 0;
         for(int i = 0; i < request.length; i++) {
-            // System.out.println(i);
-            // System.out.println(request.length);
             if (i == (request.length - 1)) {
                 placeholder2 = request[i];
             } else {
@@ -79,21 +77,13 @@ public class DiskScheduler {
             }
             placeholder1 = request[i];
             if (placeholder2 > placeholder1) {
-//                System.out.println("is greater then");
-//                System.out.println(placeholder1);
-//                System.out.println(placeholder2); 
                 value = placeholder2 - placeholder1;
-                //System.out.println(value);
                 totalTime += value;
             } else {
-                //System.out.println("is less then");
-                //System.out.println(placeholder1);
-                //System.out.println(placeholder2);
-                value = placeholder1 - placeholder2;
-                //System.out.println(value); 
+                value = placeholder1 - placeholder2; 
                 totalTime += value;
             }
-            //System.out.println(totalTime);
+
             this.totalMoves = totalTime;
         }
     }
@@ -159,12 +149,7 @@ public class DiskScheduler {
             request[i] = Integer.parseInt(numberStrs[i]);
             //System.out.println(request);
         }
-        //move in one direction!
-        //int[] lessThen = {};
-        // for (int x1 = 0; x1 < request.length; x1 ++) {
-        //     System.out.println(request[x1]);
-        // }
-        //System.out.println("^^^^^^^^^^");
+
         int[] lessThen = new int[request.length];
         int[] greaterThen = new int[request.length +1];
         int lowestPos = 0;
@@ -220,17 +205,12 @@ public class DiskScheduler {
                 
             }
         }
-        
-        //System.out.println(lowestPos);
-        //lessThen[lessThen.length-1] = highestPos;
+
         if (request[0] != 14) {
             lessThen[lessThen.length-1] = highestPos;
         }
         Arrays.sort(lessThen);
         Arrays.sort(greaterThen);
-        // for (int m = 0; m < lessThen.length; m++) {
-        //     System.out.println(lessThen[m]);
-        // }
         int p2 = 0;
         int p1 = 0;
         int p3 = 0;
@@ -252,18 +232,7 @@ public class DiskScheduler {
                 }
                 totalVal += p2 - p1;
         }
-        //System.out.println(totalVal);
-        //System.out.println(totalVal);
-        // System.out.println("GREATER THEN LIST");
-        // System.out.println(greaterThen.length);
-        // for (int n = 0; n < greaterThen.length; n++) {
-        //    System.out.println(greaterThen[n]);
-        // }
-        // System.out.println("TEST");
-        // for (int m = 0; m < lessThen.length; m ++) {
-        //    System.out.println(lessThen[m]);
-        // }
-        // System.out.println("END");
+
         for (int l = (greaterThen.length - 1); l > 0; l--) {
 
             p4 = greaterThen[l];
@@ -271,18 +240,9 @@ public class DiskScheduler {
             if (p3 == 0) {
                 break;
             }
-            //p4 = greaterThen[l];
-            //p3 = greaterThen[l+1];
-            //System.out.println("!!!!");
-            //System.out.println(l);
-            //System.out.println(p4);
-            //System.out.println(p3);
+
             Val2 = p4 - p3;
-            //System.out.println(Val2);
             totalVal2 += Val2;
-            //System.out.println("//////////////");
-            //System.out.println(totalVal);
-            //System.out.println(totalVal2);
         }
         totalVal = totalVal + totalVal2;
         System.out.println(totalVal);
